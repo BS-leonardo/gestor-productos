@@ -1,5 +1,4 @@
 <?php
-// Conexión a la BD
 require_once "conexion.php";
 
 $stmt = $pdo->query("SELECT * FROM productos");
@@ -9,15 +8,16 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Productos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+<nav class="navbar navbar-dark bg-primary mb-4">
     <div class="container">
-        <a class="navbar-brand" href="index.php" >TechnoMarket</a>
+        <a class="navbar-brand" href="index.php"><h2>TechnoMarket</h2></a>
         <div>
             <a class="btn btn-warning" href="crear.php">Agregar</a>
         </div>
@@ -28,44 +28,42 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="card shadow">
         <div class="card-header bg-primary text-white">
-            <h4 class="m-0">Listado de Productos</h4>
+            <h4>Listado de Productos</h4>
         </div>
         <div class="card-body">
 
             <div class="table-responsive">
-                <table class="table table-striped text-center align-middle">
+                <table class="table table-striped text-center">
                     <thead>
                         <tr>
-                            <th>n°prod</th>
                             <th>Producto</th>
                             <th>Precio</th>
                             <th>Categoría</th>
                             <th>Stock</th>
-                            <th>Acciones</th>
+                            <th>Modificar prod.</th>
+                            <th>Eliminar prod.</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($productos as $p): ?>
+
+                        <?php foreach ($productos as $prod): ?>
                             <tr>
-                                <td><?= $p["id_producto"] ?></td>
-                                <td><?= htmlspecialchars($p["producto"]) ?></td>
-                                <td>$<?= $p["precio"] ?></td>
-                                <td><?= htmlspecialchars($p["categoria"]) ?></td>
-                                <td><?= $p["stock"] ?></td>
+                                <td><?= ($prod["producto"]) ?></td>
+                                <td>$<?= $prod["precio"] ?></td>
+                                <td><?= ($prod["categoria"]) ?></td>
+                                <td><?= $prod["stock"] ?></td>
                                 <td>
-                                    <a href="editar.php?id=<?= $p["id_producto"] ?>" class="btn btn-warning btn-sm">Editar</a>
-                                    <a href="eliminar.php?id=<?= $p["id_producto"] ?>" 
-                                       class="btn btn-danger btn-sm"
-                                       onclick="return confirm('¿Seguro que querés eliminar este producto?');">
-                                        Eliminar
-                                    </a>
+                                    <a href="editar.php?id=<?= $prod["id_producto"] ?>" class="btn btn-warning btn-sm">Modificar</a>
+                                </td>
+                                <td>
+                                    <a href="eliminar.php?id=<?= $prod["id_producto"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que querés eliminar este producto?');">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
 
                         <?php if (count($productos) === 0): ?>
                             <tr>
-                                <td colspan="6" class="text-center text-muted">No hay productos cargados.</td>
+                                <td class="text-center">No hay productos cargados.</td>
                             </tr>
                         <?php endif; ?>
 
@@ -76,6 +74,5 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
 </body>
 </html>

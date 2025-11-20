@@ -1,12 +1,12 @@
 <?php
 $host = "localhost";
-$db = "mercado";
-$user = "root";
-$pass = "";
+$bd = "mercado";
+$usuario = "root";
+$contraseña = "";
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+    $pdo = new PDO("mysql:host=$host;dbname=$bd;charset=utf8", $usuario, $contraseña);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+} catch (PDOException $error) {
+    die("Error de conexión: " . $error->getMessage());
 }
