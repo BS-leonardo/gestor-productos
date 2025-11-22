@@ -36,18 +36,20 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <table class="table table-striped text-center">
                     <thead>
                         <tr>
+                            <th>N° prod</th>
                             <th>Producto</th>
                             <th>Precio</th>
                             <th>Categoría</th>
                             <th>Stock</th>
-                            <th>Modificar prod.</th>
-                            <th>Eliminar prod.</th>
+                            <th>Modificar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         <?php foreach ($productos as $prod): ?>
                             <tr>
+                                <td><?= ($prod["id_producto"]) ?></td>
                                 <td><?= ($prod["producto"]) ?></td>
                                 <td>$<?= $prod["precio"] ?></td>
                                 <td><?= ($prod["categoria"]) ?></td>
