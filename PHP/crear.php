@@ -47,9 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <h4>Agregar Producto</h4>
         </div>
         <div class="card-body">
-            <?php if ($mensaje): ?>
-                <div class="alert alert-danger"><?= $mensaje ?></div>
-            <?php endif; ?>
             <form method="POST">
                 <div class="mb-3">
                     <label class="form-label">producto</label>

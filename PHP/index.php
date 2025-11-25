@@ -17,8 +17,9 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <nav class="navbar navbar-dark bg-primary mb-4">
     <div class="container">
-        <a class="navbar-brand" href="index.php"><h2>TechnoMarket</h2></a>
+        <a class="navbar-brand"><h2>TechnoMarket</h2></a>
         <div>
+            <a class="btn btn-warning" href="index.php">ver productos</a>
             <a class="btn btn-warning" href="crear.php">Agregar</a>
         </div>
     </div>
@@ -58,7 +59,7 @@ $productos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <a href="editar.php?id=<?= $prod["id_producto"] ?>" class="btn btn-warning btn-sm">Modificar</a>
                                 </td>
                                 <td>
-                                    <a href="eliminar.php?id=<?= $prod["id_producto"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que querés eliminar este producto?');">Eliminar</a>
+                                    <a href="eliminar.php?id=<?= $prod["id_producto"] ?>" class="btn btn-danger btn-sm" onclick="return confirm('presione aceptar para confirmar la eliminacion');">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
