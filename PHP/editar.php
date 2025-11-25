@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <form method="POST">
                 <div class="mb-3">
                     <label class="form-label">Producto</label>
-                    <input type="text" name="producto" class="form-control" required value="<?= htmlentities($producto['producto']) ?>">
+                    <input type="text" name="producto" class="form-control" required value="<?= ($producto['producto']) ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Precio</label>
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Categoría</label>
-                    <input type="text" name="categoria" class="form-control" required value="<?= htmlentities($producto['categoria']) ?>">
+                    <input type="text" name="categoria" class="form-control" required value="<?= ($producto['categoria']) ?>">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Stock</label>
